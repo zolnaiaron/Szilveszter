@@ -33,17 +33,62 @@
 
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 0 20px 0;
         }
 
         h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: #e63946;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             margin: 0;
         }
 
+        /* --- Visszaszámláló Stílusa --- */
+        .countdown-card {
+            background: rgba(230, 57, 70, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid #e63946;
+            box-shadow: 0 0 20px rgba(230, 57, 70, 0.3);
+        }
+
+        #timer {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #f1faee;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .timer-unit {
+            display: flex;
+            flex-direction: column;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #a8dadc;
+        }
+
+        .timer-number {
+            font-size: 2.5rem;
+            color: #fff;
+            display: block;
+        }
+
+        .countdown-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #f1faee;
+            margin-top: 10px;
+        }
+
+        /* --- Eredeti kártyák maradnak --- */
         .card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -66,11 +111,10 @@
             line-height: 1.6;
         }
 
-        /* Itt módosítottam: nincs fix szélesség, az idő után egyből jön a szöveg */
         .time {
             font-weight: 600;
             color: #f1faee;
-            margin-right: 8px; /* Egy kis távolság az idő és a szöveg között */
+            margin-right: 8px;
         }
 
         .list-section {
@@ -100,8 +144,17 @@
     <div class="container">
         <header>
             <h1>Szilveszter</h1>
-            <p>Programterv és emlékeztető</p>
         </header>
+
+        <div class="countdown-card" id="countdown-container">
+            <div id="timer">
+                <div class="timer-unit"><span class="timer-number" id="days">00</span>nap</div>
+                <div class="timer-unit"><span class="timer-number" id="hours">00</span>óra</div>
+                <div class="timer-unit"><span class="timer-number" id="mins">00</span>perc</div>
+                <div class="timer-unit"><span class="timer-number" id="secs">00</span>mp</div>
+            </div>
+            <div class="countdown-text">ennyi idő múlva látjuk újra egymást</div>
+        </div>
 
         <div class="card">
             <h2>December 29. Hétfő</h2>
@@ -132,7 +185,7 @@
         <div class="card">
             <h2>Január 1. Csütörtök</h2>
             <div class="program-item"><span class="time">6:00-tól</span> Alvás</div>
-            <div class="program-item"><strong>A nap többi részében:</strong>Potatobed + filmek, lusta pihenés és finom falatok.</div>
+            <div class="program-item"><strong>A nap többi részében:</strong> Potatobed + filmek, lusta pihenés és finom falatok.</div>
         </div>
 
         <div class="card">
@@ -169,7 +222,8 @@
         <div class="card">
             <h2>🚂 Utazási infó</h2>
             <p>Vasárnap mindent megbeszélünk és megvesszük a jegyeket. <br><br>
-            <strong>Fontos:</strong> Indulás Érszőllősről román idő szerint 12:15-kor, hogy magyar idő szerint 12:00-ra az állomáson legyetek!</p>
+            <strong>Fontos:</strong> Indulás Érszőllősről román idő szerint 12:15-kor, hogy magyar idő szerint 12:00-ra az állomáson legyetek!<br><br>
+            A vonat magyar idő szerint <strong>12:19-kor</strong> indul.</p>
         </div>
 
         <div class="footer">
@@ -178,6 +232,30 @@
     </div>
 
     <script>
+        /* --- Visszaszámláló Logika --- */
+        const targetDate = new Date("Dec 29, 2025 13:00:00").getTime();
+
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("mins").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("secs").innerHTML = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown-container").innerHTML = "<div class='countdown-text'>Végre együtt! ❤️</div>";
+            }
+        }, 1000);
+
+        /* --- Havazás Logika --- */
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, snowflakes;
