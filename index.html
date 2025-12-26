@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szilveszter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: #0a192f;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        #snow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #0a192f 0%, #112240 100%);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #e63946;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin: 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: #a8dadc;
+            border-bottom: 2px solid #e63946;
+            padding-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .program-item {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        /* Itt módosítottam: nincs fix szélesség, az idő után egyből jön a szöveg */
+        .time {
+            font-weight: 600;
+            color: #f1faee;
+            margin-right: 8px; /* Egy kis távolság az idő és a szöveg között */
+        }
+
+        .list-section {
+            background: rgba(230, 57, 70, 0.15);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 30px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="snow-canvas"></canvas>
+
+    <div class="container">
+        <header>
+            <h1>Szilveszter</h1>
+            <p>Programterv és emlékeztető</p>
+        </header>
+
+        <div class="card">
+            <h2>December 29. Hétfő</h2>
+            <div class="program-item"><span class="time">12:19 - 12:59</span> Nyírábrány - Debrecen</div>
+            <div class="program-item"><span class="time">Ebéd:</span> Brunch a <strong>Frida Kávéházban</strong></div>
+            <div class="program-item"><span class="time">15:37 - 18:34</span> Debrecen - Budapest Nyugati</div>
+            <div class="program-item"><span class="time">19:00 - 20:00</span> Budapest Nyugati - Őrbottyán</div>
+            <div class="program-item"><span class="time">20:15 - 21:00</span> TV összeszerelés az imaházban</div>
+            <div class="program-item">Hazamegyünk és pizzázunk! 🍕</div>
+        </div>
+
+        <div class="card">
+            <h2>December 30. Kedd</h2>
+            <div class="program-item"><span class="time">09:00-ig</span> Alvás és pihenés</div>
+            <div class="program-item">Délután: Fodrász és vásárlás</div>
+            <div class="program-item"><span class="time">16:43 - 17:29</span> Őrbottyán - Újpest központ</div>
+            <div class="program-item"><span class="time">18:30 - 20:30</span> ⛸️ Korcsolyázás</div>
+            <div class="program-item">Este: Implomizálunk</div>
+        </div>
+
+        <div class="card">
+            <h2>December 31. Szerda</h2>
+            <div class="program-item"><span class="time">10:00-ig</span> Pihenés</div>
+            <div class="program-item">Ebéd után: Sütés-főzés Hiriénél (egyedül)</div>
+            <div class="program-item"><span class="time">18:00 - 06:00</span> ✨ <strong>Szilveszteri Buli!</strong></div>
+        </div>
+
+        <div class="card">
+            <h2>Január 1. Csütörtök</h2>
+            <div class="program-item"><span class="time">06:00-tól</span> Alvás</div>
+            <div class="program-item"><strong>Potatobed nap:</strong> filmek, lusta pihenés és finom falatok.</div>
+        </div>
+
+        <div class="card">
+            <h2>Január 2. Péntek</h2>
+            <div class="program-item"><span class="time">08:30-ig</span> Alvás, majd reggeli és pakolás</div>
+            <div class="program-item"><span class="time">10:00 - 11:00</span> Őrbottyán - Budapest Nyugati</div>
+            <div class="program-item"><span class="time">11:30 - 13:45</span> 🧖‍♀️ Lukács gyógyfürdő</div>
+            <div class="program-item"><span class="time">Ebéd:</span> Nagyi Kifőzdéje</div>
+            <div class="program-item"><span class="time">15:25 - 18:23</span> Budapest - Debrecen</div>
+            <div class="program-item"><span class="time">19:05 - 19:45</span> Debrecen - Nyírábrány</div>
+        </div>
+
+        <div class="card list-section">
+            <h2>🎒 Mit hozz magaddal?</h2>
+            <ul>
+                <li>Minden napra elég ruha</li>
+                <li>Sapka, sál, kesztyű + aláöltözet (korihoz)</li>
+                <li>Fürdőruha 👙</li>
+                <li>Pizsama (az unikornisosat is!) 🦄</li>
+                <li>A színező (ha megvan)</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>❌ Mit NE hozz?</h2>
+            <ul>
+                <li>Fogkefe, fogkrém (van itt)</li>
+                <li>Törölköző</li>
+                <li>Tusfürdő, sampon</li>
+                <li>A kedvenc dezodorod</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>🚂 Utazási infó</h2>
+            <p>Vasárnap mindent megbeszélünk és megvesszük a jegyeket. <br><br>
+            <strong>Fontos:</strong> Indulás Érszőllősről román idő szerint 12:15-kor, hogy magyar idő szerint 12:00-ra az állomáson legyetek!</p>
+        </div>
+
+        <div class="footer">
+            <p>Készült sok szeretettel ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('snow-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, snowflakes;
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            snowflakes = [];
+            for (let i = 0; i < 150; i++) {
+                snowflakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 4 + 1,
+                    d: Math.random() * 1,
+                    speed: Math.random() * 2 + 0.5
+                });
+            }
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            for (let i = 0; i < snowflakes.length; i++) {
+                let f = snowflakes[i];
+                ctx.moveTo(f.x, f.y);
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+            }
+            ctx.fill();
+            move();
+        }
+
+        function move() {
+            for (let i = 0; i < snowflakes.length; i++) {
+                let f = snowflakes[i];
+                f.y += f.speed;
+                f.x += Math.sin(f.y / 50);
+                if (f.y > height) {
+                    snowflakes[i] = { x: Math.random() * width, y: -10, r: f.r, d: f.d, speed: f.speed };
+                }
+            }
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        setInterval(draw, 33);
+    </script>
+</body>
+</html>
