@@ -44,7 +44,6 @@
             margin: 0;
         }
 
-        /* --- Visszaszámláló Stílusa --- */
         .countdown-card {
             background: rgba(230, 57, 70, 0.2);
             backdrop-filter: blur(15px);
@@ -88,7 +87,6 @@
             margin-top: 10px;
         }
 
-        /* --- Eredeti kártyák maradnak --- */
         .card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -158,12 +156,12 @@
 
         <div class="card">
             <h2>December 29. Hétfő</h2>
-            <div class="program-item"><span class="time">12:19 - 12:59</span> Nyírábrány - Debrecen</div>
-            <div class="program-item"><span class="time">Ebéd:</span> Brunch a <strong>Frida Kávéházban</strong></div>
-            <div class="program-item"><span class="time">15:37 - 18:34</span> Debrecen - Budapest Nyugati</div>
-            <div class="program-item"><span class="time">19:00 - 20:00</span> Budapest Nyugati - Őrbottyán</div>
-            <div class="program-item"><span class="time">20:15 - 21:00</span> TV összeszerelés az imaházban</div>
-            <div class="program-item">Hazamegyünk és pizzázunk! 🍕</div>
+            <div class="program-item"><span class="time">08:00 - 08:45</span> Nyírábrány - Debrecen</div>
+            <div class="program-item"><span class="time">08:55-től</span> Találkozó Debrecenben, utána együtt elmegyünk máshova egy boltba. (Hosszú utazás)</div>
+            <div class="program-item"><span class="time">15:00 - 18:15</span> Karácsonyozás Otinál</div>
+            <div class="program-item"><span class="time">19:00 - 19:58</span> Bp. Puskás Ferenc Stadion - Őrbottyán</div>
+            <div class="program-item"><span class="time">20:15 - 21:00</span> TV összeszerelése az imaházban</div>
+            <div class="program-item">Hazamegyünk és eszünk egy pizzát! 🍕</div>
         </div>
 
         <div class="card">
@@ -222,8 +220,8 @@
         <div class="card">
             <h2>🚂 Utazási infó</h2>
             <p>Vasárnap mindent megbeszélünk és megvesszük a jegyeket. <br><br>
-            <strong>Fontos:</strong> Indulás Érszőllősről román idő szerint 12:15-kor, hogy magyar idő szerint 12:00-ra az állomáson legyetek!<br><br>
-            A vonat magyar idő szerint <strong>12:19-kor</strong> indul.</p>
+            <strong>Fontos:</strong> Indulás Érszőllősről román idő szerint 07:55-kor, hogy magyar idő szerint 07:45-re az állomáson legyetek!<br><br>
+            A vonat magyar idő szerint <strong>08:00-kor</strong> indul.</p>
         </div>
 
         <div class="footer">
@@ -232,8 +230,7 @@
     </div>
 
     <script>
-        /* --- Visszaszámláló Logika --- */
-        const targetDate = new Date("Dec 29, 2025 13:00:00").getTime();
+        const targetDate = new Date("Dec 29, 2025 08:55:00").getTime();
 
         const countdownFunction = setInterval(function() {
             const now = new Date().getTime();
@@ -255,7 +252,6 @@
             }
         }, 1000);
 
-        /* --- Havazás Logika --- */
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
         let width, height, snowflakes;
